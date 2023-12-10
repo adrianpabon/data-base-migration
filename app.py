@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'  # Use your actual database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'  # Use your actual database
 db = SQLAlchemy(app)
 
 @app.route('/upload', methods=['POST'])
@@ -40,3 +40,4 @@ def upload_files():
         df.to_sql('table' + str(i+1), con=db.engine, if_exists='replace')
 
     return 'Files uploaded and data inserted into DB', 200
+
